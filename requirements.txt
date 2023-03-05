@@ -1,10 +1,15 @@
 feltlabs
+python-dotenv
+requests
+ocean-lib==2.1.0
+# Add explicit brownie requirement needed by ocean-lib
+eth-brownie>=1.19.2
 
 # Linting and code style
-black==22.1.0
-flake8==4.0.1
-isort==5.10.1
-pre-commit==2.17.0
+black>=22.10.0
+flake8>=4.0.1
+isort>=5.10.1
+pre-commit>=2.17.0
 
 # Test
 pytest
