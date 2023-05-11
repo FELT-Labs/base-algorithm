@@ -26,7 +26,12 @@ def load_local_models(config: AggregationConfig) -> List[bytes]:
     data_array = []
     for url in conf["model_urls"]:
         if config.download_models:
-            res = requests.get(url)
+            if isinstance(url, dict):
+                res = requests.get(**url)
+            elif isinstance(url, str):
+                res = requests.get(url)
+            else:
+                raise Exception(f"Invalid model URL (type {type(url)}): {url}")
             data_array.append(res.content)
         else:
             data_array.append(Path(url).read_bytes())
